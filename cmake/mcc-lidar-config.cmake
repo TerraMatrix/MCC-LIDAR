@@ -14,16 +14,16 @@ message (STATUS "mcc-lidar configuration, version " ${MCC_LIDAR_VERSION})
 
 # Tell the user project where to find our headers and libraries
 get_filename_component (_DIR ${CMAKE_CURRENT_LIST_FILE} PATH)
-get_filename_component (PROJECT_ROOT_DIR "${_DIR}/../../.." ABSOLUTE)
+get_filename_component (PROJECT_ROOT_DIR "${_DIR}/../.." ABSOLUTE)
 set (MCC_LIDAR_INCLUDE_DIRS "${PROJECT_ROOT_DIR}/include")
-set (MCC_LIDAR_LIBRARY_DIRS "${PROJECT_ROOT_DIR}/lib")
-set (MCC_LIDAR_BINARY_DIRS "${PROJECT_ROOT_DIR}/bin")
+set (MCC_LIDAR_LIBRARY_DIRS "${PROJECT_ROOT_DIR}$<$<CONFIG:DEBUG>:/debug>/lib")
+set (MCC_LIDAR_BINARY_DIRS "${PROJECT_ROOT_DIR}/tools/mcc-lidar")
 
 include(CMakeFindDependencyMacro)
-find_dependency(libLAS CONFIG)
+#find_dependency(libLAS CONFIG)
 include ("${CMAKE_CURRENT_LIST_DIR}/mcc-lidar-depends.cmake")
 set (MCC_LIDAR_LIBRARY mcc-lidar)
-endif()
+set (MCC_LIDAR_INCLUDE_DIR "${MCC_LIDAR_INCLUDE_DIRS}/mcc-lidar")
 
 # For backwards compatibility
 set (MCC_LIDAR_FOUND TRUE)
