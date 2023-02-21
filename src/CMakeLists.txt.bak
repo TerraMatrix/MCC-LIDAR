@@ -41,7 +41,6 @@ if(WITH_CUDA)
                        ${Boost_PROGRAM_OPTIONS_LIBRARY}
                        ${Boost_SYSTEM_LIBRARY}
                        ${LIBLAS_LIBRARY} CUDA::cudart CUDA::cusparse CUDA::cusolver)
-  add_definitions(-DMCC_WITH_CUDA)
 else()
 	target_link_libraries(${MCC_LIDAR_LIB_NAME} PUBLIC
                        ${Boost_FILESYSTEM_LIBRARY}

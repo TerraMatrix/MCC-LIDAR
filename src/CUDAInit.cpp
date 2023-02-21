@@ -1,3 +1,5 @@
+﻿#ifdef MCC_WITH_CUDA
+
 #include "CUDAInit.h"
 #include "cuda_runtime.h" 
 cusolverSpHandle_t solver_handle = 0;
@@ -65,3 +67,6 @@ bool cuSolverInit()
 	bUseCUDA = true;
 	return true;
 }
+
+
+#endif

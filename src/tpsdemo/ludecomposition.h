@@ -204,7 +204,8 @@ template <typename T> int ublas_LU_Solve(
 	return 0;
 }
 
-#include "..\CUDAInit.h"
+#ifdef MCC_WITH_CUDA
+#include "CUDAInit.h"
 #include <cusolverSp.h>
 #include <vector>
 
@@ -261,4 +262,7 @@ template <typename T> int CUDA_LU_Solve(
 	}
 	return 0;
 }
+
+#endif
+
 #endif // LUDECOMPOSITION_H
