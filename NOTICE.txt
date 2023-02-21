@@ -1,0 +1,27 @@
+MCC-LIDAR Program (Multiscale Curvature Classification for LIDAR Data)
+Copyright 2009-2011 Green Code LLC
+
+The U.S. Government sponsored the initial development of this software
+(contract # AG-0295-C-09-0009).
+
+This software contains code developed and copyright by other people.
+Their work definitely benefited our project, and we thank them for
+sharing their code:
+
+  - any_iterator by Thomas Becker
+  - TPSDemo by Jarno Elonen
+
+=========================================================================
+==  TPSDemo notice                                                     ==
+=========================================================================
+Copyright (C) 2003, 2004, 2005 by Jarno Elonen
+
+TPSDemo is Free Software / Open Source with a very permissive license:
+
+Permission to use, copy, modify, distribute and sell this software
+and its documentation for any purpose is hereby granted without fee,
+provided that the above copyright notice appear in all copies and
+that both that copyright notice and this permission notice appear in
+supporting documentation. The authors make no representations about
+the suitability of this software for any purpose. It is provided
+"as is" without express or implied warranty.

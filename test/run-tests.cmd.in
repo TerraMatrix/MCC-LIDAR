@@ -1,0 +1,23 @@
+@echo off
+
+if "x%~1"=="x" (
+  echo Error: Missing configuration
+  echo Usage: %0 CONFIGURATION
+  exit /b 1
+)
+
+setlocal
+set CONFIG=%~1
+set TESTS=%CONFIG%\@PROGRAM_NAME@.exe
+if not exist %TESTS% (
+  echo Error: Missing tests: %TESTS%
+  exit /b 1
+)
+
+set BOOST_LIB_DIR=@Boost_LIBRARY_DIRS@
+echo Boost library directory = %BOOST_LIB_DIR%
+
+set PATH=%BOOST_LIB_DIR%;%PATH%
+echo Added Boost library directory to PATH
+
+%TESTS%

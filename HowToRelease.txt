@@ -1,0 +1,132 @@
+HOW TO PACKAGE AND RELEASE MCC-LIDAR
+
+1.  Set Version and Release Info
+
+    a)  Determine the version number of this next release.  Version number
+        format is "major.minor".  If the next release will include a major
+        change to the software, especially one that is not backward compatible
+        with the current version, then increment the major version number and
+        reset minor version to 0.  If the next release will include changes
+        that are backward compatible, then increment just the minor version.
+
+    b)  Determine release type from the program's development status.  The
+        release types are alpha, beta, candidate for final release, and the
+        final release.  All releases except the final release are numbered:
+        alpha #, beta #, and release candidate #, where # is 1 or greater.
+
+    c)  Update the version number and release information in the
+        "src/CMakeLists.txt" file.
+
+    d)  Run CMake to generate the project's configuration header with the
+        version and release information, and the project's build files.
+
+    e)  Commit the modified CMakeLists.txt file to the Subversion repository.
+
+
+2.  Resolve Tickets
+
+    a)  Make sure each ticket in the issue tracker associated with this
+        release's Milestone has been resolved (defects fixed, enhancements
+        done, and tasks done), or has been re-assigned to a future release.
+
+    b)  Make sure all the code changes for each ticket have been checked
+        into the repository.  Check the changes for each ticket separately,
+        so it's easier for a developer in the future to understand each set
+        of changes.
+
+
+3.  Do Complete Builds
+
+    a)  A complete build of the program is necessary, so unless building in
+        a pristine project directory, completely clean the project before
+        compiling.
+        
+          Xcode: Build -> Clean All Targets
+          Visual Studio: Build -> Clean Solution
+
+    b)  Build both Debug and Release configurations because the different
+        settings for the two configuration may reveal different issues that
+        need addressed.
+
+    c)  Fix any compiler warnings because they might cause bugs.
+
+    d)  If resources are available, build the software on at least two
+        platforms (Windows, OS X, or Linux) to ensure that the code is
+        cross platform.
+
+
+4.  Test the Built Software
+
+    a)  Run the program, and manually verify that the --version option
+        displays the correct version and release.  Also check that the
+        year(s) in the copyright notice are up to date.
+
+    b)  Run the program, and manually verify that the --help option
+        displays the correct information about the current program usage
+        and its available options.
+
+    c)  Configure, build and run the project's unit tests.  See the file
+        "test/README.txt" for specific instructions.  Confirm that all tests
+        pass, for both Debug and Release configurations.
+
+
+5.  Prepare Windows Installer
+
+    Currently, the only binary package is a Windows installer.  In order to
+    make the installer, the Nullsoft Scriptable Install System (NSIS) must be
+    installed.
+
+    a)  Make the Windows installer, by building the PACKAGE project in the
+        Visual Studio.  This project will run CPack to create the installer.
+        Build this project with the Release configuration.
+
+    b)  Test the installer by running it.  Confirm that the wizard is showing
+        the proper version and release information.  After installation, open
+        the MCC-LIDAR Command Prompt for the new release, and confirm that
+        it runs:
+
+            mcc-lidar --version
+
+
+6.  Distribute the Package
+
+    a)  Upload the Windows installer to the SourceForge File System.  Set
+        this new release as the default for the Windows platform.
+
+    b)  Add an entry for the new release on the version's wiki page (this is
+        currently "Version1.0").  The entry should list the significant new
+        features and bug fixes that would be of interest to users.  Consult
+        the issue tracker for content, and review the entries of prior
+        releases for guidance.  The entry should include a direct link to
+        the release's Windows installer at SourceForge.
+
+    c)  Update the version and release information on the project's main wiki
+        page.
+
+    d)  Add a new Version via Trac administration for the new release, making
+        sure to specify its date and time (use local time).  Mark this new
+        Version as the default for new tickets.
+
+    e)  In Trac administration, modify the Milestone for this new release as
+        Completed.  Enter the same date and time as entered for the new
+        Version in the previous step.
+
+    f)  If the new release is the first release in a new development phase,
+        then update the project's development status on SourceForge.  This is
+        done by editing the project's Trove Categorization.  For example, if
+        the new release is beta 1, then the development status should be
+        changed to "4 - Beta".  If the new release is release candidate 1, then
+        the development status should be changed to "5 - Production/Stable".
+
+    g)  Announce the new release on the mcclidar-announce mailing list.
+        Include the version and release in the subject; for example:
+        
+           MCC-LIDAR version 5.2 (beta 3) released
+
+
+7.  Configuration Management
+
+    a)  Tag the revision (usually the HEAD) of the trunk used for the release.
+        For naming conventions, list the tags/ directory:
+
+          svn list https://mcclidar.svn.sourceforge.net/svnroot/mcclidar/tags
