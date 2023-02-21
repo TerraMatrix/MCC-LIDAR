@@ -206,7 +206,7 @@ set(MCC_LIDAR_DATA_DIR ${MCC_LIDAR_DATA_SUBDIR})
 ###############################################################################
 # Installation commands
 
-install(FILES AUTHORS COPYING INSTALL LICENSE.txt README.txt
+install(FILES LICENSE.txt README.txt NOTICE.txt
   DESTINATION ${MCC_LIDAR_DATA_DIR}/doc)
 
 ###############################################################################
