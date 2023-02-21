@@ -21,7 +21,7 @@ set (MCC_LIDAR_BINARY_DIRS "${PROJECT_ROOT_DIR}/bin")
 
 include(CMakeFindDependencyMacro)
 find_dependency(libLAS CONFIG)
-include ("${CMAKE_CURRENT_LIST_DIR}$<$<CONFIG:DEBUG>:/debug>/mcc-lidar-depends.cmake")
+include ("${CMAKE_CURRENT_LIST_DIR}/mcc-lidar-depends.cmake")
 set (MCC_LIDAR_LIBRARY mcc-lidar)
 endif()
 

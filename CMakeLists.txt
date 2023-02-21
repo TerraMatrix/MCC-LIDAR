@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 #
 # Main CMake configuration file for mcc-lidar
 #
@@ -130,14 +130,15 @@ endif(WIN32)
 
 find_package(libLAS)
 if(libLAS_FOUND)
-	message(STATUS "libLAS FOUND")
+  message(STATUS "libLAS FOUND")
   include_directories(${LIBLAS_INCLUDE_DIRS})
+  set(LIBLAS_LIBRARY liblas)
 else()
-	message("libLAS NOT FOUND")
-	set(LIBLAS_INCLUDE_DIR "" CACHE PATH "")
-	set(LIBLAS_LIBRARY_DEBUG "" CACHE FILEPATH "")
-	set(LIBLAS_LIBRARY_RELEASE "" CACHE FILEPATH "")
-	mark_as_advanced(CLEAR LIBLAS_INCLUDE_DIR)
+  message("libLAS NOT FOUND") 
+  set(LIBLAS_INCLUDE_DIR "" CACHE PATH "")
+  set(LIBLAS_LIBRARY_DEBUG "" CACHE FILEPATH "")
+  set(LIBLAS_LIBRARY_RELEASE "" CACHE FILEPATH "")
+  mark_as_advanced(CLEAR LIBLAS_INCLUDE_DIR)
   mark_as_advanced(CLEAR LIBLAS_LIBRARY_DEBUG)
   mark_as_advanced(CLEAR LIBLAS_LIBRARY_RELEASE)
   set(LIBLAS_LIBRARY debug    ${LIBLAS_LIBRARY_DEBUG}
@@ -247,4 +248,3 @@ list(APPEND CPACK_SOURCE_IGNORE_FILES "mpg-config.bat")
 include(CPack)
 
 add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
-

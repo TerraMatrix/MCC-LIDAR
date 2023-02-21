@@ -1,4 +1,4 @@
-
+﻿
 set(MCC_LIDAR_HEADERS_DIR ../include/mcc-lidar)
 
 file(GLOB_RECURSE MCC_LIDAR_HEADERS "${MCC_LIDAR_HEADERS_DIR}/*.hpp" "${MCC_LIDAR_HEADERS_DIR}/*.h")
@@ -43,7 +43,7 @@ if(WITH_CUDA)
                        ${LIBLAS_LIBRARY} CUDA::cudart CUDA::cusparse CUDA::cusolver)
   add_definitions(-DMCC_WITH_CUDA)
 else()
-	target_link_libraries(${MCC_LIDAR_LIB_NAME} PUBLIC
+  target_link_libraries(${MCC_LIDAR_LIB_NAME} PUBLIC
                        ${Boost_FILESYSTEM_LIBRARY}
                        ${Boost_PROGRAM_OPTIONS_LIBRARY}
                        ${Boost_SYSTEM_LIBRARY}
